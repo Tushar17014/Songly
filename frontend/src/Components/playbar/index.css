@@ -1,0 +1,74 @@
+.play-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 97%;
+    background-color: #000000;
+    padding: 12px 20px;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.playback-controls,
+.volume-controls {
+    display: flex;
+    align-items: center;
+}
+
+.control-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background-color: #ddd;
+    margin: 0 20px;
+    position: relative;
+    border-radius: 2px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #1db954;
+    width: 50%;
+    /* Example: Initial progress width */
+    border-radius: 2px;
+}
+
+.track-info {
+    flex: 1;
+    text-align: center;
+    margin: 0 20px;
+    color: #ffffff;
+}
+
+.track-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.track-artist {
+    color: #ffffff;
+}
+
+.volume-controls {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.volume-slider {
+    width: 80px;
+    margin-left: 10px;
+    color: #ffffff;
+}
