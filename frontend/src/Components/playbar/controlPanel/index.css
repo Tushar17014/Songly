@@ -1,0 +1,17 @@
+.control-panel {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(196, 196, 196);
+  }
+.control-panel span {
+  font-size: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+  
+  .timer {
+    font-size: 10px;
+    font-weight: 200;
+  }
