@@ -40,7 +40,8 @@ function Slider({ percentage, onChange}) {
       ></div>
       <input
         type='range'
-        value={position}
+        value={0}
+        // value={position}
         ref={rangeRef}
         step='0.01'
         className='range'

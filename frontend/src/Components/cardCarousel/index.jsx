@@ -1,15 +1,15 @@
 import Card from '../card'
 import './index.css'
 import React, { useRef } from 'react'
-const CardCarousel = ({ cardsss }) => {
+const CardCarousel = ({ cardsss, setSongID }) => {
+    let songID = [];
     let image = [];
     let name = [];
     cardsss.map((card) => {
+        songID.push(card.id);
         image.push(card.image);
         name.push(card.name);
     })
-    console.log(image);
-    console.log(name);
     const containerRef = useRef(null);
 
     const scrollLeft = () => {
@@ -35,8 +35,7 @@ const CardCarousel = ({ cardsss }) => {
             <button className="scroll-button left" onClick={scrollLeft}>&lt;</button>
             <div className="card-container" ref={containerRef}>
                 {image.map((img, index) => (
-                    <Card image={img} name={name[index]}></Card>
-                    // <Card image={img} name={name[index]}></Card>
+                    <Card id={songID[index]} image={img} name={name[index]} key={songID[index]} setSongID={setSongID}></Card>
                 ))}
             </div>
             <button className="scroll-button right" onClick={scrollRight}>&gt;</button>

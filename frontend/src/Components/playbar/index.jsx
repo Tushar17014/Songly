@@ -1,17 +1,17 @@
 import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPause, faPlay, faBackwardStep, faForwardStep, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
+import { faPause, faPlay, faBackwardStep, faForwardStep, faVolumeHigh, faL } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from 'react';
 import { Song_Path } from '../../constants/const';
 import Slider from './slider';
 import ControlPanel from './controlPanel';
-const Playbar = () => {
+const Playbar = ({songName}) => {
     const [percentage, setPercentage] = useState(0)
     const [volume, setVolume] = useState(100)
     const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(0)
     const [currentTime, setCurrentTime] = useState(0)
-    const song = Song_Path + "5.mp3";
+    const song = `${Song_Path}${songName}.mp3`;
     const audioRef = useRef()
     const audio = audioRef.current
 
@@ -25,17 +25,33 @@ const Playbar = () => {
         setVolume(e.target.value);
     }
 
-    const play = () => {
-        audio.volume = 1;
-
-        if (!isPlaying) {
-            setIsPlaying(true)
-            audio.play()
+    const playSong = () => {
+        if(audio){
+            setIsPlaying(true);
+            audio.play();
         }
+    }
 
-        if (isPlaying) {
-            setIsPlaying(false)
-            audio.pause()
+    const pauseSong = () => {
+        if(audio){
+            setIsPlaying(false);
+            audio.pause();
+        }
+    }
+
+    const play = () => {
+        if(audio){
+            audio.volume = 1;
+    
+            if (!isPlaying) {
+                setIsPlaying(true)
+                audio.play()
+            }
+    
+            if (isPlaying) {
+                setIsPlaying(false)
+                audio.pause()
+            }
         }
     }
 
@@ -46,6 +62,10 @@ const Playbar = () => {
         setPercentage(+percent)
         setCurrentTime(time.toFixed(2))
     }
+
+    useEffect(() => {
+        playSong();
+    }, [songName]);
 
     return (
         <>
