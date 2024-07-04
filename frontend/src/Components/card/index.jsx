@@ -1,9 +1,12 @@
 import './index.css'
 import { Image_Path } from '../../constants/const';
-const Card = ({id, image, name, setSongID}) => {
+import { useDispatch } from 'react-redux';
+import { ChangeSongId } from '../../redux/slices/slice1';
+const Card = ({id, image, name}) => {
+    const dispatch = useDispatch();
     return (
         <div className="card" onClick={() => {
-            setSongID(id);
+            dispatch(ChangeSongId(id));
         }}>
             <img src={Image_Path + image} alt="No Image" />
             <div className="card-content">

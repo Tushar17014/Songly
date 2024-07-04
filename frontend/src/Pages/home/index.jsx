@@ -4,29 +4,29 @@ import Playbar from '../../Components/playbar'
 import './index.css'
 import { getSongs } from '../../services/api/songs'
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { ChangePlayingSong, ChangeSongTitle } from '../../redux/slices/slice1'
 const Home = () => {
     const [songs, setSongs] = useState([]);
-    const [songID, setSongID] = useState(null);
-    const [playThisSong, setPlayThisSong] = useState(1);
-
-
+    const songId = useSelector((state) => state.counterRouter.songId);
+    const dispatch = useDispatch();
     useEffect(()=>{
         const fun = async () => {
             const res = await getSongs();
             setSongs(res);
-            console.log("My REs: ", res);
         };
         fun();
     }, []);
 
     useEffect(() => {
         songs.forEach((song)=>{
-            if(songID === song.id){
-                setPlayThisSong(song.songPath);
+            if(songId === song.id){
+                dispatch(ChangePlayingSong(song.songPath));
+                dispatch(ChangeSongTitle(song.name));
                 return;
             }
         });
-    }, [songID])
+    }, [songId])
 
     return(
         <>
@@ -36,20 +36,14 @@ const Home = () => {
                     <div className="recently-main">
                         <h1>Recently Played</h1>
                         <div className="cards">
-                            <CardCarousel cardsss={songs} setSongID={setSongID}/>
+                            <CardCarousel cardsss={songs} />
                         </div>
                     </div>
                 )
                 }
-                {/* <div className="popular-main">
-                    <h1>Most Popular</h1>
-                    <div className="cards">
-                        <CardCarousel cardsss={songs}/>
-                    </div>
-                </div> */}
             </div>
             <footer>
-                <Playbar songName={playThisSong}></Playbar>
+                <Playbar></Playbar>
             </footer>
         </>
     )

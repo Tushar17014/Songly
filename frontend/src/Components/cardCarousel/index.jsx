@@ -1,7 +1,7 @@
 import Card from '../card'
 import './index.css'
 import React, { useRef } from 'react'
-const CardCarousel = ({ cardsss, setSongID }) => {
+const CardCarousel = ({ cardsss }) => {
     let songID = [];
     let image = [];
     let name = [];
@@ -35,7 +35,7 @@ const CardCarousel = ({ cardsss, setSongID }) => {
             <button className="scroll-button left" onClick={scrollLeft}>&lt;</button>
             <div className="card-container" ref={containerRef}>
                 {image.map((img, index) => (
-                    <Card id={songID[index]} image={img} name={name[index]} key={songID[index]} setSongID={setSongID}></Card>
+                    <Card id={songID[index]} image={img} name={name[index]} key={songID[index]}></Card>
                 ))}
             </div>
             <button className="scroll-button right" onClick={scrollRight}>&gt;</button>
