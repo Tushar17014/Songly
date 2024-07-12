@@ -1,0 +1,30 @@
+.mainPlaylistCard{
+    /* border: 2px solid white; */
+    width: 19%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.mainPlaylistCard:hover{
+    transform: scale(1.03);
+}
+.mainPlaylistCard .image img{
+    width: 170px;
+    border-radius: 10px;
+}
+
+.mainPlaylistCard .playlistDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainPlaylistCard .playlistDetails p{
+    margin: 0;
+    padding: 0;
+}
+
+.mainPlaylistCard .playlistDetails .songCount p{
+    color: rgb(205, 205, 205);
+}

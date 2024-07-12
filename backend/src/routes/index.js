@@ -3,7 +3,7 @@ const router = express.Router();
 const {myApi} = require('../apis/1')
 
 router.get(
-    "/abcd",
+    "/getSongs",
     myApi
 )
 

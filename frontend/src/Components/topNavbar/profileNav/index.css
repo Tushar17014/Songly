@@ -1,0 +1,19 @@
+.mainProfileNav{
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    cursor: pointer;
+}
+.mainProfileNav .name p{
+    font-size: 19px;
+}
+.mainProfileNav .photo{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-left: 10px;
+}
+.mainProfileNav .photo img{
+    width: 100%;
+    border-radius: 100%;
+}

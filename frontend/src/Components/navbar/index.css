@@ -1,51 +1,38 @@
-.navbar{
+.mainNavbar{
+    width: 13%;
     background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 2px 3px 2px rgb(27, 27, 27);
-    z-index: 1;
+    position: fixed;
+    height: 100%;
+    left: 0;
 }
-.navbar ul{
+.navContent{
+    padding-left: 15px;
+    padding-top: 20px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
 }
-.navbar ul li{
-    list-style-type: none;
-    margin-right: 20px;
+.navBurger{
+    margin-bottom: 60px;
+    font-size: 24px;
     cursor: pointer;
 }
-.navbar ul li:hover{
-    transform: scale(1.1);
+.navContent .navLinks{
+    margin-bottom: 30px;
 }
-.navbar ul li a{
-    color: white;
-    text-decoration: none;
-}.navbar .logo{
-    margin-right: 50px;
-    font-size: 30px;
+.navContent .navLinks p{
+    cursor: pointer;
 }
-
-.searchBar{
-    width: 45%;
+.navContent .navLinks p:hover{
+    transform: scale(1.05);
 }
-
-.searchBar input{
-    width: 100%;
-    padding: 8px;
-    border-radius: 6px;
-    background-color: rgb(36, 36, 36);
-    color: white;
+.navMyArea .heading{
+    font-size: 21px;
+    font-weight: 500;
 }
-
-.profileDiv{
-    margin-right: 100px;
+.navMyArea .myArea p{
+    cursor: pointer;
 }
-.profileDiv a{
-    color: white;
-    text-decoration: none;
-    font-size: 27px;
-}
-.profileDiv:hover{
-    transform: scale(1.1);
+.navMyArea .myArea p:hover{
+    transform: scale(1.05);
 }

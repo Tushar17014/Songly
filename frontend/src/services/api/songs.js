@@ -1,7 +1,7 @@
 import AxiosInstance from "../../constants/AxiosInstance";
 
 export async function getSongs(){
-    const {data} = await AxiosInstance.get('/abcd');
+    const {data} = await AxiosInstance.get('/getSongs');
     let dataArr = [];
     for(let key in data){
         if(key != 'success'){

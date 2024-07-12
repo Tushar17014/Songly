@@ -1,21 +1,34 @@
-import './index.css'
-
+import './index.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 function Navbar() {
+
     return (
-        <nav className='navbar'>
-            <ul>
-                <li className='logo'><a href='/'>Songly</a></li>
-                <li><a href='/'>Home</a></li>
-                <li><a href='/'>About</a></li>
-            </ul>
-            <div className="searchBar">
-                <input type="text" placeholder='Search Song'/>
+        <>
+            <div className="mainNavbar">
+                <div className="navContent">
+                    <div className="navBurger">
+                        <FontAwesomeIcon icon={faBars} />
+                    </div>
+                    <div className="navLinks">
+                        <p>Home</p>
+                        <p>Podcasts</p>
+                        <p>Artists</p>
+                        <p>Albums</p>
+                    </div>
+                    <div className="navMyArea">
+                        <div className="heading">
+                            <p>My Music</p>
+                        </div>
+                        <div className="myArea">
+                            <p>Playlists</p>
+                            <p>Downloads</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="profileDiv">
-                <a href="/">User</a>
-            </div>
-        </nav>
-    );
+        </>
+    )
 }
 
-export default Navbar;
+export default Navbar

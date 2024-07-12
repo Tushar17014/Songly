@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterRouter from './slices/slice1'
+import songRouter from './slices/songSlice'
+import apiRouter from './slices/apiSlice'
 
 export const store = configureStore({
   reducer: {
-    counterRouter: counterRouter,
+    songRouter: songRouter,
+    apiRouter: apiRouter,
   },
 })

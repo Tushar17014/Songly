@@ -5,18 +5,23 @@ import { useEffect, useRef, useState } from 'react';
 import { Song_Path } from '../../constants/const';
 import Slider from './slider';
 import ControlPanel from './controlPanel';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ChangePlayingSongObj } from '../../redux/slices/songSlice';
 const Playbar = () => {
     const [percentage, setPercentage] = useState(0)
     const [volume, setVolume] = useState(100)
     const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(0)
     const [currentTime, setCurrentTime] = useState(0)
-    const songNamePath = useSelector((state) => state.counterRouter.playingSongPath);
-    const songTitle = useSelector((state) => state.counterRouter.songTitle);
+    const songNamePath = useSelector((state) => state.songRouter.playingSongPath);
+    const songTitle = useSelector((state) => state.songRouter.songTitle);
+    const playingSongID = useSelector((state) => state.songRouter.playingSongID);
+    const pauseRequest = useSelector((state) => state.songRouter.pauseRequest);
+    const resumeRequest = useSelector((state) => state.songRouter.resumeRequest);
     const song = `${Song_Path}${songNamePath}.mp3`;
     const audioRef = useRef()
     const audio = audioRef.current
+    const dispatch = useDispatch();
 
     const onChange = (e) => {
         audio.currentTime = (audio.duration / 100) * e.target.value
@@ -29,9 +34,24 @@ const Playbar = () => {
     }
 
     const playSong = () => {
-        if(audio){
+        if(audio && songNamePath){
+            document.getElementById('playBar').classList.remove("playbar-remove");
             setIsPlaying(true);
             audio.play();
+            dispatch(ChangePlayingSongObj({
+                songID: playingSongID,
+                playing: true,
+            }))
+        }
+    }
+    const pauseSong = () => {
+        if(audio){
+            setIsPlaying(false);
+            audio.pause();
+            dispatch(ChangePlayingSongObj({
+                songID: playingSongID,
+                playing: false,
+            }))
         }
     }
 
@@ -42,11 +62,19 @@ const Playbar = () => {
             if (!isPlaying) {
                 setIsPlaying(true)
                 audio.play()
+                dispatch(ChangePlayingSongObj({
+                    songID: playingSongID,
+                    playing: true,
+                }))
             }
 
             if (isPlaying) {
                 setIsPlaying(false)
                 audio.pause()
+                dispatch(ChangePlayingSongObj({
+                    songID: playingSongID,
+                    playing: false,
+                }))
             }
         }
     }
@@ -63,9 +91,19 @@ const Playbar = () => {
         playSong();
     }, [songNamePath, songTitle]);
 
+    useEffect(() => {
+        playSong();
+    }, [resumeRequest])
+
+    useEffect(() => {
+        if(pauseRequest){
+            pauseSong();
+        }
+    }, [pauseRequest])
+
     return (
         <>
-            <div className="play-bar">
+            <div className="play-bar playbar-remove" id='playBar'>
                 <Slider percentage={percentage} onChange={onChange} />
 
                 <div className="playInfo">

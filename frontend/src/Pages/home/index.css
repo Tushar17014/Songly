@@ -1,19 +1,64 @@
-.main{
-    margin-left: 70px;
-    margin-top: 35px;
+.mainHome{
+    background-color: #090909;
+    padding-top: 10%;
+    padding-left: 20px;
 }
-h1{
+
+.mainHome .heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainHome .heading span{
+    background-color: #090909;
     color: white;
-    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 25px;
+    border: 1px solid rgb(35, 35, 35);
+    border-radius: 70px;
+    cursor: pointer;
+    margin-right: 80px;
+    margin-top: 20px;
 }
-.cards{
+.mainHome .heading span:hover{
+    background-color: #232323;
+}
+.mainHome .heading span p{
+    font-size: 14px;
+}
+
+.mainHome .heading p{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.mainHome .recommended{
+    width: 90%;
+    margin-bottom: 80px;
+}
+
+.mainHome .recommended .songCards .row{
+    display: flex;
+    width: 100%;
+}
+
+.mainHome .playlistCards{
     display: flex;
 }
 
-footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
+.mainHome .topPlaylist{
+    width: 90%;
+    margin-bottom: 80px;
+}
+
+.mainHome .topArtist{
+    width: 90%;
+    margin-bottom: 80px;
+}
+
+.mainHome .artistCards{
+    display: flex;
 }
